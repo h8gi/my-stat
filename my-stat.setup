@@ -1,0 +1,11 @@
+;;; my-stat.setup
+
+;;; コンパイル
+(compile -s -O3 -d1 "my-stat.scm" -j my-stat)
+(compile -s -O3 -d0 "my-stat.import.scm")
+
+;;; インストール
+(install-extension
+ 'my-stat
+ '("my-stat.so" "my-stat.import.so")
+ '((version 1.0)))
