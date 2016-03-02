@@ -1,5 +1,5 @@
 (module my-stat
     *
-  (import scheme chicken)
+  (import scheme chicken srfi-1)
   (include "main.scm")
   )
