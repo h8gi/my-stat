@@ -56,3 +56,22 @@
 (define (sd lst)
   (sqrt (var lst)))
 
+;;; sampling
+(define (sample lst n #!key (replace #t))
+  (define (delete-1 x lst acc)
+    (cond [(null? lst) '()]
+          [(equal? x (car lst)) (append acc (cdr lst))]
+          [else (delete-1 x (cdr lst) (cons (car lst) acc))]))
+  (define (sample-replace len acc)
+    (map (lambda (x) (list-ref lst (random len)))
+         (make-list n)))
+  (define (sample-not lst len n acc)
+    (cond [(or (zero? n) (null? lst)) acc]
+          [else (let ([val (list-ref lst (random len))])
+                  (sample-not (delete-1 val lst '())
+                              (sub1 len)
+                              (sub1 n)
+                              (cons val acc)))]))
+  (if replace
+      (sample-replace (length lst) '())
+      (sample-not lst (length lst) n '())))
