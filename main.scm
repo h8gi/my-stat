@@ -17,7 +17,7 @@
 ;;; statistics
 (define (sum-n-mean lst)
   (define (inner lst sum n)
-    (cond ((null? lst) (values sum n (if (zero? n) #f (/ sum n))))
+    (cond ((null? lst) (values sum n (if (zero? n) 0 (/ sum n))))
           (else (inner (cdr lst) (+ (car lst) sum) (add1 n)))))
   (inner lst 0 0))
 (define (sum lst)
