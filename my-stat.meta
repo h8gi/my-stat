@@ -2,4 +2,5 @@
 ((author "yagihiroki")
  (synopsis "my-stat")
  (license "GPLv3")
- (files "main.scm" "my-stat.scm" "my-stat.setup" "my-stat.meta"))
+ (files "main.scm" "my-stat.scm" "my-stat.setup" "my-stat.meta")
+ (depends "random-mtzig"))
