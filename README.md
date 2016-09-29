@@ -2,8 +2,8 @@
 
 ### pi
 ### uniform
-### range-random
-`(range-random a b)`
+### random-range
+`(random-range a b)`
 
 ### random-normal
 `(random-normal [mean [sd]])`

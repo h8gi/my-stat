@@ -5,7 +5,7 @@
   (let ([st (init)])
     (lambda () (randu! st))))
 
-(define (range-random a b)
+(define (random-range a b)
   (+ a (* (- b a)
           (uniform))))
 
@@ -75,3 +75,34 @@
   (if replace
       (sample-replace (length lst) '())
       (sample-not lst (length lst) n '())))
+
+;;; random shuffle
+(define (vector-shuffle! vec)
+  (let ([size (vector-length vec)])
+    (let loop ([i (- size 1)]
+	       [j (random size)])	; 0 <= j <= i
+      (cond [(zero? i) vec]
+	    [else
+	     (vector-swap! vec i j)
+	     (loop (- i 1) (random i))]))))
+
+(define (vector-swap! vec i j)
+  (let ([tmp (vector-ref vec i)])
+    (vector-set! vec i (vector-ref vec j))
+    (vector-set! vec j tmp)
+    vec))
+
+(define (shuffle! lst)
+  (let ([size (length lst)])
+    (let loop ([i (- size 1)]
+	       [j (random size)])
+      (cond [(zero? i) lst]
+	    [else
+	     (list-swap! lst i j)
+	     (loop (- i 1) (random i))]))))
+
+(define (list-swap! lst i j)
+  (let ([tmp (list-ref lst i)])
+    (set! (list-ref lst i) (list-ref lst j))
+    (set! (list-ref lst j) tmp)
+    lst))
