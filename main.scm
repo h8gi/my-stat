@@ -1,7 +1,7 @@
 (use random-mtzig matchable)
 ;;; random
 (define pi (acos -1))
-(define uniform
+(define random-uniform
   (let ([st (init)])
     (lambda () (randu! st))))
 

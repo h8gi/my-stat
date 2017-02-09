@@ -1,7 +1,8 @@
 # my-stat
 
 ### pi
-### uniform
+### random-uniform
+[0, 1]
 ### random-range
 `(random-range a b)`
 
