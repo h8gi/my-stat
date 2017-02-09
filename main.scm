@@ -7,12 +7,12 @@
 
 (define (random-range a b)
   (+ a (* (- b a)
-          (uniform))))
+          (random-uniform))))
 
 (define (random-normal #!optional (mean 0) (sd 1))
   (+ mean (* sd
-             (* (sqrt (* -2 (log (uniform))))
-                (cos  (* 2 pi (uniform)))))))
+             (* (sqrt (* -2 (log (random-uniform))))
+                (cos  (* 2 pi (random-uniform)))))))
 
 ;;; statistics
 (define (sum-n-mean lst)
