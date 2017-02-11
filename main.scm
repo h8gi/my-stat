@@ -106,3 +106,8 @@
     (set! (list-ref lst i) (list-ref lst j))
     (set! (list-ref lst j) tmp)
     lst))
+
+(define-syntax collect
+  (syntax-rules ()
+	[(_ n expr)
+	 (map (lambda (x) expr) (make-list n))]))
